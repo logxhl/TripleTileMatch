@@ -5710,7 +5710,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1078162045
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 10
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -10513,136 +10513,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df7f9e34b71b3349b299308abb3670c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemapFloor1: {fileID: 1872587496}
-  tilemapFloor2: {fileID: 120288595}
-  tilemapFloor3: {fileID: 238729344}
-  tilemapFloor4: {fileID: 1471333134}
-  tilemapFloor5: {fileID: 992393056}
-  tilePositionsFloor1:
-  - {x: -4, y: -6, z: 0}
-  - {x: -4, y: -4, z: 0}
-  - {x: -4, y: -3, z: 0}
-  - {x: -4, y: 1, z: 0}
-  - {x: -4, y: 2, z: 0}
-  - {x: -4, y: 4, z: 0}
-  - {x: -3, y: -4, z: 0}
-  - {x: -3, y: 1, z: 0}
-  - {x: -3, y: 4, z: 0}
-  - {x: -2, y: 4, z: 0}
-  - {x: -1, y: -2, z: 0}
-  - {x: -1, y: -1, z: 0}
-  - {x: -1, y: 0, z: 0}
-  - {x: -1, y: 1, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 1, y: -4, z: 0}
-  - {x: 1, y: 1, z: 0}
-  - {x: 1, y: 4, z: 0}
-  - {x: 2, y: -6, z: 0}
-  - {x: 2, y: -4, z: 0}
-  - {x: 2, y: -3, z: 0}
-  - {x: 2, y: 1, z: 0}
-  - {x: 2, y: 2, z: 0}
-  - {x: 2, y: 4, z: 0}
-  tilePositionsFloor2:
-  - {x: -4, y: -7, z: 0}
-  - {x: -4, y: -4, z: 0}
-  - {x: -4, y: 1, z: 0}
-  - {x: -4, y: 3, z: 0}
-  - {x: -4, y: 4, z: 0}
-  - {x: -3, y: 3, z: 0}
-  - {x: -2, y: -3, z: 0}
-  - {x: -2, y: -2, z: 0}
-  - {x: -2, y: -1, z: 0}
-  - {x: -2, y: 0, z: 0}
-  - {x: -2, y: 1, z: 0}
-  - {x: -2, y: 4, z: 0}
-  - {x: -1, y: -3, z: 0}
-  - {x: -1, y: -2, z: 0}
-  - {x: -1, y: -1, z: 0}
-  - {x: -1, y: 0, z: 0}
-  - {x: -1, y: 1, z: 0}
-  - {x: -1, y: 4, z: 0}
-  - {x: 0, y: 3, z: 0}
-  - {x: 1, y: -7, z: 0}
-  - {x: 1, y: -4, z: 0}
-  - {x: 1, y: 1, z: 0}
-  - {x: 1, y: 3, z: 0}
-  - {x: 1, y: 4, z: 0}
-  tilePositionsFloor3:
-  - {x: -4, y: 2, z: 0}
-  - {x: -4, y: 4, z: 0}
-  - {x: -3, y: -6, z: 0}
-  - {x: -3, y: -3, z: 0}
-  - {x: -3, y: 1, z: 0}
-  - {x: -3, y: 2, z: 0}
-  - {x: -3, y: 4, z: 0}
-  - {x: -2, y: 4, z: 0}
-  - {x: -1, y: -3, z: 0}
-  - {x: -1, y: -2, z: 0}
-  - {x: -1, y: -1, z: 0}
-  - {x: -1, y: 0, z: 0}
-  - {x: -1, y: 1, z: 0}
-  - {x: -1, y: 2, z: 0}
-  - {x: -1, y: 4, z: 0}
-  - {x: -1, y: 5, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 1, y: -6, z: 0}
-  - {x: 1, y: -3, z: 0}
-  - {x: 1, y: 1, z: 0}
-  - {x: 1, y: 2, z: 0}
-  - {x: 1, y: 4, z: 0}
-  - {x: 2, y: 2, z: 0}
-  - {x: 2, y: 4, z: 0}
-  tilePositionsFloor4:
-  - {x: -4, y: -4, z: 0}
-  - {x: -4, y: 1, z: 0}
-  - {x: -4, y: 3, z: 0}
-  - {x: -4, y: 4, z: 0}
-  - {x: -3, y: -7, z: 0}
-  - {x: -3, y: 3, z: 0}
-  - {x: -2, y: -3, z: 0}
-  - {x: -2, y: -2, z: 0}
-  - {x: -2, y: -1, z: 0}
-  - {x: -2, y: 0, z: 0}
-  - {x: -2, y: 1, z: 0}
-  - {x: -2, y: 4, z: 0}
-  - {x: -1, y: -3, z: 0}
-  - {x: -1, y: -2, z: 0}
-  - {x: -1, y: -1, z: 0}
-  - {x: -1, y: 0, z: 0}
-  - {x: -1, y: 1, z: 0}
-  - {x: -1, y: 4, z: 0}
-  - {x: 0, y: -7, z: 0}
-  - {x: 0, y: 3, z: 0}
-  - {x: 1, y: -4, z: 0}
-  - {x: 1, y: 1, z: 0}
-  - {x: 1, y: 3, z: 0}
-  - {x: 1, y: 4, z: 0}
-  tilePositionsFloor5:
-  - {x: -4, y: 2, z: 0}
-  - {x: -4, y: 4, z: 0}
-  - {x: -3, y: -3, z: 0}
-  - {x: -3, y: 1, z: 0}
-  - {x: -3, y: 2, z: 0}
-  - {x: -3, y: 4, z: 0}
-  - {x: -2, y: -6, z: 0}
-  - {x: -2, y: 4, z: 0}
-  - {x: -1, y: -3, z: 0}
-  - {x: -1, y: -2, z: 0}
-  - {x: -1, y: -1, z: 0}
-  - {x: -1, y: 0, z: 0}
-  - {x: -1, y: 1, z: 0}
-  - {x: -1, y: 2, z: 0}
-  - {x: -1, y: 4, z: 0}
-  - {x: -1, y: 5, z: 0}
-  - {x: 0, y: -6, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 1, y: -3, z: 0}
-  - {x: 1, y: 1, z: 0}
-  - {x: 1, y: 2, z: 0}
-  - {x: 1, y: 4, z: 0}
-  - {x: 2, y: 2, z: 0}
-  - {x: 2, y: 4, z: 0}
+  tilemaps:
+  - {fileID: 1872587496}
+  - {fileID: 120288595}
+  - {fileID: 238729344}
+  - {fileID: 1471333134}
+  - {fileID: 992393056}
   lsPrefabs:
   - {fileID: 8221358633656398612, guid: 417b445f71d02334e90752022512e5ba, type: 3}
   - {fileID: 6734850491250784930, guid: 9986f2b1db45e0e43835768561cf0560, type: 3}
@@ -10699,16 +10575,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ce8991c919d2b42a2bc9d0309b1f79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  containerFloor1: {fileID: 2837355219354545573, guid: 6b5a634e98db4cf4bab474e96eaa4437, type: 3}
-  containerFloor2: {fileID: 8045331181887929628, guid: bdef22f4df3000c40a838b1535e6a67a, type: 3}
-  containerFloor3: {fileID: 8190221586406213031, guid: 791b6e95927a16747838b8510df25cce, type: 3}
-  containerFloor4: {fileID: 7897514014354483811, guid: 48c2bebee3df8cd448c1b9d7bf23c3f0, type: 3}
-  containerFloor5: {fileID: 5725348698123499676, guid: dacfb85785d32a04193a0832b14a4a14, type: 3}
-  containerFloor1Instance: {fileID: 0}
-  containerFloor2Instance: {fileID: 0}
-  containerFloor3Instance: {fileID: 0}
-  containerFloor4Instance: {fileID: 0}
-  containerFloor5Instance: {fileID: 0}
+  containerPrefabs:
+  - {fileID: 2837355219354545573, guid: 6b5a634e98db4cf4bab474e96eaa4437, type: 3}
+  - {fileID: 8045331181887929628, guid: bdef22f4df3000c40a838b1535e6a67a, type: 3}
+  - {fileID: 8190221586406213031, guid: 791b6e95927a16747838b8510df25cce, type: 3}
+  - {fileID: 7897514014354483811, guid: 48c2bebee3df8cd448c1b9d7bf23c3f0, type: 3}
+  - {fileID: 5725348698123499676, guid: dacfb85785d32a04193a0832b14a4a14, type: 3}
+  containerInstances:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1292010712
 GameObject:
   m_ObjectHideFlags: 0
@@ -13201,7 +13079,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -954590507
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f8e316bc77e19ea48b95363047d318a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
