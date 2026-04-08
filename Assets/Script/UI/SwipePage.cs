@@ -15,7 +15,7 @@ public class SwipePage : MonoBehaviour, IEndDragHandler
     Vector3 targetPos;
     [SerializeField] private Vector3 pageStep;
     [SerializeField] private float tweenTime;
-    [SerializeField] private LeanTweenType tweenType;
+    // [SerializeField] private LeanTweenType tweenType;
     float dragThreshold;
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class SwipePage : MonoBehaviour, IEndDragHandler
     }
     private void NextPage()
     {
-        if(currentPage < maxPage)
+        if (currentPage < maxPage)
         {
             currentPage++;
             targetPos += pageStep;
@@ -43,14 +43,14 @@ public class SwipePage : MonoBehaviour, IEndDragHandler
     }
     private void MovePage()
     {
-        levelPageRect.LeanMoveLocal(targetPos, tweenTime).setEase(tweenType);
+        // levelPageRect.LeanMoveLocal(targetPos, tweenTime).setEase(tweenType);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(Mathf.Abs(eventData.position.y - eventData.pressPosition.y) > dragThreshold)
+        if (Mathf.Abs(eventData.position.y - eventData.pressPosition.y) > dragThreshold)
         {
-            if (eventData.position.y > eventData.pressPosition.y ) NextPage();
+            if (eventData.position.y > eventData.pressPosition.y) NextPage();
             else PreviosPage();
         }
         else
