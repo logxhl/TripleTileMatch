@@ -1,24 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Tilemaps;
 
 public class toolSpawnTile : MonoBehaviour
 {
-    [Header("Tilemap")]
-    public Tilemap tilemapFloor1;
-    public Tilemap tilemapFloor2;
-    public Tilemap tilemapFloor3;
-    public Tilemap tilemapFloor4;
-    public Tilemap tilemapFloor5;
+    [Header("Tilemaps")]
+    [ListDrawerSettings(ShowIndexLabels = true)]
+    public List<Tilemap> tilemaps = new List<Tilemap>();
 
-    [Header("Tile Positions")]
-    public List<Vector3Int> tilePositionsFloor1 = new List<Vector3Int>();
-    public List<Vector3Int> tilePositionsFloor2 = new List<Vector3Int>();
-    public List<Vector3Int> tilePositionsFloor3 = new List<Vector3Int>();
-    public List<Vector3Int> tilePositionsFloor4 = new List<Vector3Int>();
-    public List<Vector3Int> tilePositionsFloor5 = new List<Vector3Int>();
+    [Header("Tile Positions (Auto-filled)")]
+    [ReadOnly]
+    public List<List<Vector3Int>> tilePositionsPerFloor = new List<List<Vector3Int>>();
 
     public List<GameObject> lsPrefabs;
 
@@ -34,11 +27,13 @@ public class toolSpawnTile : MonoBehaviour
     [Button]
     private void Btn_GetTilePositions()
     {
-        GetTilePositions(tilemapFloor1, tilePositionsFloor1);
-        GetTilePositions(tilemapFloor2, tilePositionsFloor2);
-        GetTilePositions(tilemapFloor3, tilePositionsFloor3);
-        GetTilePositions(tilemapFloor4, tilePositionsFloor4);
-        GetTilePositions(tilemapFloor5, tilePositionsFloor5);
+        tilePositionsPerFloor.Clear();
+        foreach (Tilemap tilemap in tilemaps)
+        {
+            List<Vector3Int> positions = new List<Vector3Int>();
+            GetTilePositions(tilemap, positions);
+            tilePositionsPerFloor.Add(positions);
+        }
     }
 
     [Button]
@@ -50,12 +45,23 @@ public class toolSpawnTile : MonoBehaviour
             return;
         }
 
+        if (tilemaps.Count != parent.containerPrefabs.Count)
+        {
+            Debug.LogError($"Số tilemaps ({tilemaps.Count}) phải bằng số container prefabs ({parent.containerPrefabs.Count}).");
+            return;
+        }
+
+        // Đảm bảo tilePositionsPerFloor đã được fill
+        if (tilePositionsPerFloor.Count != tilemaps.Count)
+        {
+            Debug.LogWarning("tilePositionsPerFloor chưa khớp, đang tự động gọi Btn_GetTilePositions...");
+            Btn_GetTilePositions();
+        }
+
+        // Gom tất cả tile positions
         List<Vector3Int> allTilePositions = new List<Vector3Int>();
-        allTilePositions.AddRange(tilePositionsFloor1);
-        allTilePositions.AddRange(tilePositionsFloor2);
-        allTilePositions.AddRange(tilePositionsFloor3);
-        allTilePositions.AddRange(tilePositionsFloor4);
-        allTilePositions.AddRange(tilePositionsFloor5);
+        foreach (var positions in tilePositionsPerFloor)
+            allTilePositions.AddRange(positions);
 
         int totalSpawnPoints = allTilePositions.Count;
         if (totalSpawnPoints % 3 != 0)
@@ -68,12 +74,26 @@ public class toolSpawnTile : MonoBehaviour
         Shuffle(allTilePositions);
         List<GameObject> shuffledPrefabs = CreateShuffledPrefabList(totalSpawnPoints);
 
+        int floorCount = tilemaps.Count;
         int spawnIndex = 0;
-        SpawnObjects(tilePositionsFloor1, "floor1", 4, 0, parent.containerFloor1Instance, shuffledPrefabs, ref spawnIndex, new Vector3(0f, 0f, 0f));
-        SpawnObjects(tilePositionsFloor2, "floor2", 3, 1, parent.containerFloor2Instance, shuffledPrefabs, ref spawnIndex, new Vector3(0f, 0f, 0f));
-        SpawnObjects(tilePositionsFloor3, "floor3", 2, 2, parent.containerFloor3Instance, shuffledPrefabs, ref spawnIndex, new Vector3(0f, 0f, 0f));
-        SpawnObjects(tilePositionsFloor4, "floor4", 1, 3, parent.containerFloor4Instance, shuffledPrefabs, ref spawnIndex, new Vector3(0f, 0f, 0f));
-        SpawnObjects(tilePositionsFloor5, "floor5", 0, 4, parent.containerFloor5Instance, shuffledPrefabs, ref spawnIndex, new Vector3(0f, 0f, 0f));
+
+        for (int i = 0; i < floorCount; i++)
+        {
+            string layerName = "floor" + (i + 1);
+            float positionZ = (floorCount - 1 - i);   // floor1 = Z cao nhất, giống logic cũ (4,3,2,1,0)
+            int sortingOrder = i;  // floor1 = sorting cao nhất
+
+            SpawnObjects(
+                tilePositionsPerFloor[i],
+                layerName,
+                positionZ,
+                sortingOrder,
+                parent.containerInstances[i],
+                shuffledPrefabs,
+                ref spawnIndex,
+                Vector3.zero
+            );
+        }
     }
 
     void GetTilePositions(Tilemap tilemap, List<Vector3Int> tilePositions)
@@ -86,9 +106,7 @@ public class toolSpawnTile : MonoBehaviour
             {
                 Vector3Int tilePos = new Vector3Int(x, y, 0);
                 if (tilemap.HasTile(tilePos))
-                {
                     tilePositions.Add(tilePos);
-                }
             }
         }
     }
@@ -99,24 +117,19 @@ public class toolSpawnTile : MonoBehaviour
 
         int prefabsPerType = totalSpawnPoints / lsPrefabs.Count;
         foreach (GameObject prefab in lsPrefabs)
-        {
             for (int i = 0; i < prefabsPerType; i++)
-            {
                 prefabPool.Add(prefab);
-            }
-        }
 
         int remaining = totalSpawnPoints % lsPrefabs.Count;
         for (int i = 0; i < remaining; i++)
-        {
             prefabPool.Add(lsPrefabs[i]);
-        }
 
         Shuffle(prefabPool);
         return prefabPool;
     }
 
-    void SpawnObjects(List<Vector3Int> tilePositions, string layerName, float positionZ, int sortingOrder, GameObject container, List<GameObject> shuffledPrefabs, ref int spawnIndex, Vector3 offset)
+    void SpawnObjects(List<Vector3Int> tilePositions, string layerName, float positionZ, int sortingOrder,
+        GameObject container, List<GameObject> shuffledPrefabs, ref int spawnIndex, Vector3 offset)
     {
         if (container == null)
         {
@@ -128,7 +141,7 @@ public class toolSpawnTile : MonoBehaviour
         {
             if (spawnIndex >= shuffledPrefabs.Count) return;
 
-            Vector3 worldPos = tilemapFloor1.GetCellCenterWorld(tilePos) + offset;
+            Vector3 worldPos = tilemaps[0].GetCellCenterWorld(tilePos) + offset;
             worldPos.z = positionZ;
 
             GameObject selectedPrefab = shuffledPrefabs[spawnIndex++];
@@ -140,9 +153,7 @@ public class toolSpawnTile : MonoBehaviour
 
             SpriteRenderer sr = temp.GetComponent<SpriteRenderer>();
             if (sr != null)
-            {
                 sr.sortingOrder = sortingOrder;
-            }
         }
     }
 
