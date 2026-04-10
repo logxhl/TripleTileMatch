@@ -72,13 +72,15 @@ public class toolSpawnTile : MonoBehaviour
         }
 
         Shuffle(allTilePositions);
-        List<GameObject> shuffledPrefabs = CreateShuffledPrefabList(totalSpawnPoints);
+        List<GameObject> shuffledPrefabs = CreateSolvablePrefabList(totalSpawnPoints);
 
         int floorCount = tilemaps.Count;
         int spawnIndex = 0;
 
         for (int i = 0; i < floorCount; i++)
         {
+            Shuffle(tilePositionsPerFloor[i]);
+
             string layerName = "floor" + (i + 1);
             float positionZ = (floorCount - 1 - i);   // floor1 = Z cao nhất, giống logic cũ (4,3,2,1,0)
             int sortingOrder = i;  // floor1 = sorting cao nhất
@@ -111,20 +113,23 @@ public class toolSpawnTile : MonoBehaviour
         }
     }
 
-    List<GameObject> CreateShuffledPrefabList(int totalSpawnPoints)
+    List<GameObject> CreateSolvablePrefabList(int totalSpawnPoints)
     {
         List<GameObject> prefabPool = new List<GameObject>();
 
-        int prefabsPerType = totalSpawnPoints / lsPrefabs.Count;
-        foreach (GameObject prefab in lsPrefabs)
-            for (int i = 0; i < prefabsPerType; i++)
-                prefabPool.Add(prefab);
+        int tripleCount = totalSpawnPoints / 3;
 
-        int remaining = totalSpawnPoints % lsPrefabs.Count;
-        for (int i = 0; i < remaining; i++)
-            prefabPool.Add(lsPrefabs[i]);
+        for (int i = 0; i < tripleCount; i++)
+        {
+            GameObject prefab = lsPrefabs[Random.Range(0, lsPrefabs.Count)];
+
+            prefabPool.Add(prefab);
+            prefabPool.Add(prefab);
+            prefabPool.Add(prefab);
+        }
 
         Shuffle(prefabPool);
+
         return prefabPool;
     }
 
