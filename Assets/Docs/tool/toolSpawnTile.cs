@@ -83,7 +83,7 @@ public class toolSpawnTile : MonoBehaviour
             float positionZ = (floorCount - 1 - i);   // floor1 = Z cao nhất, giống logic cũ (4,3,2,1,0)
             int sortingOrder = i;  // floor1 = sorting cao nhất
 
-            SpawnObjects(
+            SpawnObjects(tilemaps[i],
                 tilePositionsPerFloor[i],
                 layerName,
                 positionZ,
@@ -128,7 +128,7 @@ public class toolSpawnTile : MonoBehaviour
         return prefabPool;
     }
 
-    void SpawnObjects(List<Vector3Int> tilePositions, string layerName, float positionZ, int sortingOrder,
+    void SpawnObjects(Tilemap tilemap, List<Vector3Int> tilePositions, string layerName, float positionZ, int sortingOrder,
         GameObject container, List<GameObject> shuffledPrefabs, ref int spawnIndex, Vector3 offset)
     {
         if (container == null)
@@ -141,7 +141,7 @@ public class toolSpawnTile : MonoBehaviour
         {
             if (spawnIndex >= shuffledPrefabs.Count) return;
 
-            Vector3 worldPos = tilemaps[0].GetCellCenterWorld(tilePos) + offset;
+            Vector3 worldPos = tilemap.GetCellCenterWorld(tilePos) + offset;
             worldPos.z = positionZ;
 
             GameObject selectedPrefab = shuffledPrefabs[spawnIndex++];

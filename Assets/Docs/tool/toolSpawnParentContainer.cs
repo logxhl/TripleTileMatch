@@ -10,7 +10,6 @@ public class toolSpawnParentContainer : MonoBehaviour
     [ReadOnly]
     public List<GameObject> containerInstances = new List<GameObject>();
 
-    [Button("Spawn Containers")]
     public void SpawnContainer()
     {
         // Đảm bảo list instances có đủ slot
@@ -29,7 +28,6 @@ public class toolSpawnParentContainer : MonoBehaviour
         }
     }
 
-    [Button("Despawn All Containers")]
     public void DespawnAll()
     {
         for (int i = 0; i < containerInstances.Count; i++)
