@@ -27,13 +27,13 @@ public class SkillManager : MonoBehaviour
     protected int count;
     protected TilebaseController fallbackTile = null;
 
-    [Header("Shuffle")] 
+    [Header("Shuffle")]
     protected List<Vector3> tilePosFloor1, tilePosFloor2, tilePosFloor3, tilePosFloor4, tilePosFloor5;
     [SerializeField] protected List<List<Vector3>> tilePosFloors;
 
     private void Awake()
     {
-        if(instance != null) Destroy(gameObject);
+        if (instance != null) Destroy(gameObject);
         else instance = this;
 
         tilePosFloor1 = new List<Vector3>();
@@ -59,7 +59,7 @@ public class SkillManager : MonoBehaviour
         if (previosPos == Vector3.zero) return;
         GameController.Instance.SortControllerRemake.lsTilebaseSelected.Remove(tile);
         GameController.Instance.SortControllerRemake.lsTilebaseClicked.Remove(tile);
-        GameController.Instance.SortControllerRemake.MoveTileToTarget(tile, previosPos, () => { tile.polygonCollider.enabled = true; });
+        GameController.Instance.SortControllerRemake.MoveTileToTarget(tile, previosPos, () => { tile.boxCollider.enabled = true; });
         tilePosTracking.Remove(tile.name);
         GameController.Instance.numOfCurrentTile++;
         SkillButtonUI.Instance._undoSKillAmount--;
@@ -139,9 +139,9 @@ public class SkillManager : MonoBehaviour
     public void ShuffleTile()
     {
         currentLevel = GameObject.Find("Level" + GameController.Instance.currentLevel);
-        
+
         int index = 0;
-        foreach(Transform child in currentLevel.transform)
+        foreach (Transform child in currentLevel.transform)
         {
             tilePosFloors[index].Clear();
             foreach (Transform child2 in child.transform)
@@ -157,7 +157,7 @@ public class SkillManager : MonoBehaviour
             tile.spriteRenderer.sortingOrder = 0;
             tile.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, 0);
             tile.gameObject.layer = LayerMask.NameToLayer("floor1");
-            tile.polygonCollider.enabled = false;
+            tile.boxCollider.enabled = false;
         }
         listShuffleTiles = listShuffleTiles.OrderBy(x => Random.value).ToList();
         for (int i = 0; i < index; i++)
@@ -165,9 +165,9 @@ public class SkillManager : MonoBehaviour
             PlaceTileInPos(listShuffleTiles, tilePosFloors[i], i);
         }
     }
-    private void PlaceTileInPos(List<TilebaseController> lsTile, List<Vector3> lsPos,int floorIndex)
+    private void PlaceTileInPos(List<TilebaseController> lsTile, List<Vector3> lsPos, int floorIndex)
     {
-        foreach(var pos in lsPos)
+        foreach (var pos in lsPos)
         {
             if (lsTile.Count == 0) return;
             var tile = lsTile[0];
@@ -193,7 +193,7 @@ public class SkillManager : MonoBehaviour
             Transform container = currentLevel.transform.GetChild(floorIndex);
             tile.transform.SetParent(null);
             tile.transform.SetParent(container);
-            tile.polygonCollider.enabled = true;
+            tile.boxCollider.enabled = true;
         }
     }
 }

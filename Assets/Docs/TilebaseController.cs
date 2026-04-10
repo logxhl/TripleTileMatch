@@ -3,26 +3,23 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class TilebaseController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public SpriteRenderer spriteRenderer;
-    public PolygonCollider2D polygonCollider;
+    public BoxCollider2D boxCollider;
     public int id;
     public List<TilebaseController> lsTileHigher;
     public static bool isPause;
-    private void Update()
-    {
-        ResetColor();
-    }
+
     private void Awake()
     {
         isPause = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        polygonCollider = GetComponent<PolygonCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
     private void OnMouseDown()
     {
@@ -51,9 +48,12 @@ public class TilebaseController : MonoBehaviour
         if (currentLayerIndex < triggerLayerIndex)
         {
             TilebaseController tile = collision.gameObject.GetComponent<TilebaseController>();
-            if (tile != null) lsTileHigher.Add(tile);
+            if (tile != null)
+            {
+                lsTileHigher.Add(tile);
+                ResetColor();
+            }
         }
-
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -62,34 +62,24 @@ public class TilebaseController : MonoBehaviour
             if (lsTileHigher[i].gameObject.name == collision.gameObject.name)
             {
                 lsTileHigher.RemoveAt(i);
+                ResetColor();
                 break;
             }
         }
     }
     private void ResetColor()
     {
-        if (lsTileHigher.Count > 0)
-        {
-            this.spriteRenderer.color = Color.gray;
-        }
-        if (lsTileHigher.Count == 0)
-        {
-            this.spriteRenderer.color = Color.Lerp(Color.gray, Color.white, 2f);
-
-        }
+        spriteRenderer.color = lsTileHigher.Count > 0 ? Color.gray : Color.white;
     }
     public void HandleMoveLocal(Transform target, TweenCallback onComplete)
     {
-        // Tắt collider để tránh va chạm khi đang di chuyển
-        if (polygonCollider != null)
-            polygonCollider.enabled = false;
+        if (boxCollider != null)
+            boxCollider.enabled = false;
 
-        // Di chuyển tới vị trí local của target trong 0.3 giây
         transform.DOLocalMove(target.localPosition, 0.3f)
             .SetEase(Ease.OutQuad)
             .OnComplete(() =>
             {
-                // Gọi callback sau khi di chuyển xong
                 onComplete?.Invoke();
             });
     }

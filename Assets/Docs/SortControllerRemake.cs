@@ -57,7 +57,7 @@ public class SortControllerRemake : MonoBehaviour
                 RearrangeSlotSort(validPosSort);
             }
 
-            tileBaseParam.polygonCollider.enabled = false;
+            tileBaseParam.boxCollider.enabled = false;
             MoveTileToTarget(tileBaseParam, lsSlotSort[validPosSort].position);
             GameController.Instance.numOfCurrentTile--;
             lsTilebaseClicked.Insert(validPosSort, tileBaseParam);
