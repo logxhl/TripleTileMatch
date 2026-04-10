@@ -117,9 +117,34 @@ public class toolSpawnTile : MonoBehaviour
     {
         List<GameObject> prefabPool = new List<GameObject>();
 
-        int tripleCount = totalSpawnPoints / 3;
+        int prefabCount = lsPrefabs.Count;
 
-        for (int i = 0; i < tripleCount; i++)
+        if (prefabCount == 0)
+        {
+            Debug.LogError("Prefab list is empty.");
+            return prefabPool;
+        }
+
+        if (totalSpawnPoints < prefabCount * 3)
+        {
+            Debug.LogError("Không đủ tile để spawn mỗi prefab ít nhất 3 lần.");
+            return prefabPool;
+        }
+
+        // đảm bảo mỗi prefab có 3
+        foreach (var prefab in lsPrefabs)
+        {
+            prefabPool.Add(prefab);
+            prefabPool.Add(prefab);
+            prefabPool.Add(prefab);
+        }
+
+        int remaining = totalSpawnPoints - prefabPool.Count;
+
+        // fill phần còn lại theo triple
+        int extraTriples = remaining / 3;
+
+        for (int i = 0; i < extraTriples; i++)
         {
             GameObject prefab = lsPrefabs[Random.Range(0, lsPrefabs.Count)];
 
