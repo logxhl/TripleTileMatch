@@ -47,23 +47,32 @@ public class SortControllerRemake : MonoBehaviour
             }
         }
     }
-    public void HandleOnMouseDown(TilebaseController tileBaseParam)
+    public void HandleOnMouseDown(TilebaseController tile)
     {
-        int validPosSort = GetValidPosToSort(tileBaseParam);
-        if (validPosSort != -1)
+        if (lsTilebaseClicked.Count >= lsSlotSort.Count)
         {
-            if (validPosSort < lsTilebaseClicked.Count)
-            {
-                RearrangeSlotSort(validPosSort);
-            }
-
-            tileBaseParam.boxCollider.enabled = false;
-            MoveTileToTarget(tileBaseParam, lsSlotSort[validPosSort].position);
-            GameController.Instance.numOfCurrentTile--;
-            lsTilebaseClicked.Insert(validPosSort, tileBaseParam);
-            lsTilebaseSelected.Add(tileBaseParam);
-            StartCoroutine(HandleTileMatch(tileBaseParam));
+            Debug.Log("Full slot → Game Over");
+            return;
         }
+
+        int validPos = GetValidPosToSort(tile);
+
+        if (validPos < lsTilebaseClicked.Count)
+        {
+            RearrangeSlotSort(validPos);
+        }
+
+        tile.boxCollider.enabled = false;
+
+        lsTilebaseClicked.Insert(validPos, tile);
+        lsTilebaseSelected.Add(tile);
+
+        MoveTileToTarget(tile, lsSlotSort[validPos].position, () =>
+        {
+            StartCoroutine(HandleTileMatch(tile));
+        });
+
+        GameController.Instance.numOfCurrentTile--;
     }
 
     private int GetValidPosToSort(TilebaseController tileBaseParam)
@@ -98,7 +107,6 @@ public class SortControllerRemake : MonoBehaviour
             MoveTileToTarget(lsTilebaseClicked[i - 1], lsSlotSort[i].position);
         }
     }
-
     private IEnumerator HandleTileMatch(TilebaseController tile)
     {
         if (lsTilebaseClicked.Count < 3) yield break;
@@ -147,7 +155,7 @@ public class SortControllerRemake : MonoBehaviour
                             lsTilebaseSelected.Remove(t);
                             SkillManager.instance.tilePosTracking.Remove(t.name);
                             t.transform.DOKill();
-                            DestroyImmediate(t.gameObject);
+                            Destroy(t.gameObject);
                         }
                     }
 
