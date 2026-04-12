@@ -149,9 +149,9 @@ public class SkillButtonUI : MonoBehaviour
     }
     private void LoadAmountSkill()
     {
-        _undoSKillAmount = PlayerPrefs.GetInt("Amount Undo Skill", 3);
-        _hintSkillAmount = PlayerPrefs.GetInt("Amount Hint Skill", 3);
-        _shuffleSkillAmount = PlayerPrefs.GetInt("Amount Shuffle Skill", 3);
+        _undoSKillAmount = PlayerPrefs.GetInt("Amount Undo Skill", 10);
+        _hintSkillAmount = PlayerPrefs.GetInt("Amount Hint Skill", 10);
+        _shuffleSkillAmount = PlayerPrefs.GetInt("Amount Shuffle Skill", 10);
     }
     private void SaveAmountSkill()
     {

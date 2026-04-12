@@ -167,15 +167,22 @@ public class SkillManager : MonoBehaviour
     }
     private void PlaceTileInPos(List<TilebaseController> lsTile, List<Vector3> lsPos, int floorIndex)
     {
+        Transform container = currentLevel.transform.GetChild(floorIndex);
+
         foreach (var pos in lsPos)
         {
             if (lsTile.Count == 0) return;
+
             var tile = lsTile[0];
             lsTile.RemoveAt(0);
+
+            tile.lsTileHigher.Clear();
+
             Vector3 newPos = pos;
             newPos.z = -floorIndex;
 
             tile.spriteRenderer.sortingOrder = floorIndex;
+
             string layerName = "floor" + (floorIndex + 1);
             int layerIndex = LayerMask.NameToLayer(layerName);
 
@@ -184,16 +191,21 @@ public class SkillManager : MonoBehaviour
                 Debug.LogWarning("Layer " + layerName + " not found.");
                 return;
             }
-            else
-            {
-                tile.gameObject.layer = layerIndex;
-            }
 
-            tile.transform.DOMove(newPos, 0.5f).SetEase(Ease.InOutQuad);
-            Transform container = currentLevel.transform.GetChild(floorIndex);
-            tile.transform.SetParent(null);
+            tile.gameObject.layer = layerIndex;
+
             tile.transform.SetParent(container);
-            tile.boxCollider.enabled = true;
+
+            tile.boxCollider.enabled = false;
+
+            tile.transform.DOMove(newPos, 0.5f)
+                .SetEase(Ease.InOutQuad)
+                .OnComplete(() =>
+                {
+                    tile.boxCollider.enabled = true;
+                });
         }
+
+        Physics2D.SyncTransforms(); // đảm bảo trigger đúng
     }
 }
