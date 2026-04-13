@@ -32,7 +32,11 @@ public class SkillButtonUI : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null) Destroy(Instance);
+        if (Instance != null && Instance == this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         else Instance = this;
         LoadAmountSkill();
         UpdateSkill();
