@@ -4,17 +4,28 @@ using System.Collections;
 public class CameraShake : MonoBehaviour
 {
     public static CameraShake Instance;
+
     private Vector3 originalPos;
+    private Coroutine shakeRoutine;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        originalPos = transform.localPosition;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
 
     public void Shake(float duration = 0.2f, float magnitude = 0.2f)
     {
-        StartCoroutine(ShakeCoroutine(duration, magnitude));
+        originalPos = transform.localPosition;
+
+        if (shakeRoutine != null)
+            StopCoroutine(shakeRoutine);
+
+        shakeRoutine = StartCoroutine(ShakeCoroutine(duration, magnitude));
     }
 
     private IEnumerator ShakeCoroutine(float duration, float magnitude)
@@ -33,5 +44,6 @@ public class CameraShake : MonoBehaviour
         }
 
         transform.localPosition = originalPos;
+        shakeRoutine = null;
     }
 }
