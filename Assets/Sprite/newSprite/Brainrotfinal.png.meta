@@ -1,34 +1,40 @@
 fileFormatVersion: 2
-guid: 6bad82850c884a2429026217b9e0d4cc
+guid: d71b2538266a65e4db620650eed5aaf9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 512650135445350597
-    second: Brainrott (1)_0
+      213: -1444293553459628057
+    second: Brainrotfinal_0
   - first:
-      213: -3409561897539506249
-    second: Brainrott (1)_1
+      213: -7432141529095576598
+    second: Brainrotfinal_1
   - first:
-      213: -5119346153141308481
-    second: Brainrott (1)_2
+      213: -6671094463129573119
+    second: Brainrotfinal_2
   - first:
-      213: 9045271916684021024
-    second: Brainrott (1)_3
+      213: -4762720022774924547
+    second: Brainrotfinal_3
   - first:
-      213: -7375609296521007893
-    second: Brainrott (1)_4
+      213: -3050006615979914720
+    second: Brainrotfinal_4
   - first:
-      213: -4767512806747004365
-    second: Brainrott (1)_5
+      213: -5730133825323114474
+    second: Brainrotfinal_5
   - first:
-      213: 8520686908639910403
-    second: Brainrott (1)_6
+      213: 3871394452250627469
+    second: Brainrotfinal_6
   - first:
-      213: 4900343816468026317
-    second: Brainrott (1)_7
+      213: -3611901046226042532
+    second: Brainrotfinal_7
   - first:
-      213: 8096972826078284185
-    second: Brainrott (1)_8
+      213: 5907932846599483297
+    second: Brainrotfinal_8
+  - first:
+      213: 6818666324052339553
+    second: Brainrotfinal_9
+  - first:
+      213: 7748648542384685113
+    second: Brainrotfinal_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +81,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 360
+  spritePixelsToUnits: 280
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -137,199 +143,243 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Brainrott (1)_0
+      name: Brainrotfinal_0
       rect:
         serializedVersion: 2
-        x: 53
-        y: 824
-        width: 362
-        height: 385
+        x: 199
+        y: 916
+        width: 280
+        height: 280
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5c8a641059c4d1700800000000000000
-      internalID: 512650135445350597
+      spriteID: 7e7f6a25aa6d4fbe0800000000000000
+      internalID: -1444293553459628057
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brainrott (1)_1
+      name: Brainrotfinal_1
       rect:
         serializedVersion: 2
-        x: 443
-        y: 822
-        width: 364
-        height: 385
+        x: 488
+        y: 916
+        width: 280
+        height: 280
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7bf6371d48dcea0d0800000000000000
-      internalID: -3409561897539506249
+      spriteID: ae364dd08aabbd890800000000000000
+      internalID: -7432141529095576598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brainrott (1)_2
+      name: Brainrotfinal_2
       rect:
         serializedVersion: 2
-        x: 835
-        y: 822
-        width: 360
-        height: 386
+        x: 774
+        y: 916
+        width: 280
+        height: 280
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fb3ffb31ccd64f8b0800000000000000
-      internalID: -5119346153141308481
+      spriteID: 10926164ee28b63a0800000000000000
+      internalID: -6671094463129573119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brainrott (1)_3
+      name: Brainrotfinal_3
       rect:
         serializedVersion: 2
-        x: 54
-        y: 426
-        width: 359
-        height: 381
+        x: 198
+        y: 626
+        width: 280
+        height: 280
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 02d84c262e2478d70800000000000000
-      internalID: 9045271916684021024
+      spriteID: dfa3cdd8f5b67edb0800000000000000
+      internalID: -4762720022774924547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brainrott (1)_4
+      name: Brainrotfinal_4
       rect:
         serializedVersion: 2
-        x: 441
-        y: 426
-        width: 365
-        height: 384
+        x: 488
+        y: 626
+        width: 280
+        height: 280
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: becebc62c6294a990800000000000000
-      internalID: -7375609296521007893
+      spriteID: 02a0de374233ca5d0800000000000000
+      internalID: -3050006615979914720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brainrott (1)_5
+      name: Brainrotfinal_5
       rect:
         serializedVersion: 2
-        x: 834
-        y: 426
-        width: 361
-        height: 385
+        x: 775
+        y: 626
+        width: 280
+        height: 280
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 33228b39c5466ddb0800000000000000
-      internalID: -4767512806747004365
+      spriteID: 6106a2a35a97a70b0800000000000000
+      internalID: -5730133825323114474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brainrott (1)_6
+      name: Brainrotfinal_6
       rect:
         serializedVersion: 2
-        x: 53
-        y: 30
-        width: 360
-        height: 376
+        x: 198
+        y: 339
+        width: 280
+        height: 280
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 30a9dcf499f8f3670800000000000000
-      internalID: 8520686908639910403
+      spriteID: d8d01d72eb4f9b530800000000000000
+      internalID: 3871394452250627469
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brainrott (1)_7
+      name: Brainrotfinal_7
       rect:
         serializedVersion: 2
-        x: 443
-        y: 29
-        width: 363
-        height: 377
+        x: 486
+        y: 333
+        width: 280
+        height: 280
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dc3dbd9ecb4810440800000000000000
-      internalID: 4900343816468026317
+      spriteID: c51c5d79223ffddc0800000000000000
+      internalID: -3611901046226042532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brainrott (1)_8
+      name: Brainrotfinal_8
       rect:
         serializedVersion: 2
-        x: 835
-        y: 28
-        width: 361
-        height: 378
+        x: 775
+        y: 334
+        width: 280
+        height: 280
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 999036eb2e93e5070800000000000000
-      internalID: 8096972826078284185
+      spriteID: 1afac665f913df150800000000000000
+      internalID: 5907932846599483297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brainrotfinal_9
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 41
+        width: 295
+        height: 280
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16bee0715e4c0ae50800000000000000
+      internalID: 6818666324052339553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brainrotfinal_10
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 44
+        width: 280
+        height: 280
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93000329bcab88b60800000000000000
+      internalID: 7748648542384685113
       vertices: []
       indices: 
       edges: []
@@ -338,7 +388,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 096412a525db02b499a3eb718883fcbf
     internalID: 0
     vertices: []
     indices: 
@@ -348,15 +398,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Brainrott (1)_0: 512650135445350597
-      Brainrott (1)_1: -3409561897539506249
-      Brainrott (1)_2: -5119346153141308481
-      Brainrott (1)_3: 9045271916684021024
-      Brainrott (1)_4: -7375609296521007893
-      Brainrott (1)_5: -4767512806747004365
-      Brainrott (1)_6: 8520686908639910403
-      Brainrott (1)_7: 4900343816468026317
-      Brainrott (1)_8: 8096972826078284185
+      Brainrotfinal_0: -1444293553459628057
+      Brainrotfinal_1: -7432141529095576598
+      Brainrotfinal_10: 7748648542384685113
+      Brainrotfinal_2: -6671094463129573119
+      Brainrotfinal_3: -4762720022774924547
+      Brainrotfinal_4: -3050006615979914720
+      Brainrotfinal_5: -5730133825323114474
+      Brainrotfinal_6: 3871394452250627469
+      Brainrotfinal_7: -3611901046226042532
+      Brainrotfinal_8: 5907932846599483297
+      Brainrotfinal_9: 6818666324052339553
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
