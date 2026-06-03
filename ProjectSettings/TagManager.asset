@@ -45,5 +45,8 @@ TagManager:
   - name: Tile
     uniqueID: 1440891287
     locked: 0
+  - name: UI
+    uniqueID: 266524041
+    locked: 0
   m_RenderingLayers:
   - Default
